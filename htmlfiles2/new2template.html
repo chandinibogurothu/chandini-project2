@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nav{
+            display: flex;
+            justify-content: space-around;
+        }
+        .image_grid{
+            display: grid;
+            grid-template-columns:1fr 1fr 1fr 1fr ;
+            grid-template-rows: 1fr;
+            height: 100vh;
+            padding: 100px;
+            gap:25px;
+            padding: 100px;
+        }
+        .item img{
+            width: 100%;
+            height: 50%;
+        }
+        input[type="checkbox"]{
+            display: none;
+
+        }
+
+        .sidebar{
+            display: none;
+
+        }
+        .icon+#check:checked~.sidebar{
+            display: block;
+            position: absolute;
+            left: 0px;
+            height: 100vh;
+            width: 20%;
+            background-color:gray;
+            font-family: 30px;
+            transition: ease;
+            transform-origin: 100ms;
+
+        }
+
+       
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <label for="check" class="icon">&#9776;</label>
+        <input type="checkbox" id="check"></input>
+        
+        <div class="sidebar">
+            <p>close</p>
+            <p>Food</p>
+            <p>About</p>   
+        </div>
+        <p>My Food</p>
+        <p>Mail</p>
+        
+    </nav>
+    <section class="image_grid">
+        <div class="item">
+            <img src="https://www.w3schools.com/w3images/sandwich.jpg">
+            <p>The Perfect Sandwich, A Real NYC Classic</p>
+            <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="item">
+            <img src="https://www.w3schools.com/w3images/steak.jpg">
+            <p>Let Me Tell You About This Steak</p>
+            <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="item">
+            <img src="https://www.w3schools.com/w3images/cherries.jpg">
+            <p>Cherries, interrupted</p>
+            <p>Lorem ipsum text praesent tincidunt ipsum lipsum.
+
+                What else?</p>
+        </div>
+        <div class="item">
+            <img src="https://www.w3schools.com/w3images/wine.jpg">
+            <p>Once Again, Robust Wine and Vegetable Pasta</p>
+            <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="item">
+            <img src="https://www.w3schools.com/w3images/popsicle.jpg">
+            <p>All I Need Is a Popsicle</p>
+            <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="item">
+            <img src="https://www.w3schools.com/w3images/salmon.jpg">
+            <p>Salmon For Your Skin</p>
+            <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="item">
+            <img src="https://www.w3schools.com/w3images/sandwich.jpg">
+            <p>The Perfect Sandwich, A Real Classic</p>
+            <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="item">
+            <img src="https://www.w3schools.com/w3images/croissant.jpg">
+            <p>Le French</p>
+            <p>Lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        
+
+    </section>
+
+</body>
+</html>

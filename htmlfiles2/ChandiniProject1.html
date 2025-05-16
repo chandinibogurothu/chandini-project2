@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infinite Loop</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+
+ 
+  <style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  .hero {
+    height: 100vh;
+    background: url('./infinite-loop-01.jpg') no-repeat center center/cover;
+    color: white;
+    position: relative;
+    text-align: center;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 2em;
+    background-color: rgba(0, 0, 0, 0.5);
+    /*position: fixed;*/
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .nav ul {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .hero-content .arrow {
+  display: inline-block;
+  background-color: #007BFF;
+  color: white;
+  padding: 5px 15px;      /* Smaller padding = smaller box */
+  border-radius: 1px;
+  font-size: 18px;         /* Smaller font size */
+  margin-top: 20px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.hero-content .arrow:hover {
+  background-color: #0056b3;
+  cursor: pointer;
+}
+#what-we-do i {
+  min-width: 40px;
+}
+
+.testimonials-section {
+  position: relative;
+  background: url('./infinite-loop-02.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.testimonials-section .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.testimonials-section .content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.testimonials-section h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.testimonials-section p {
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+.testimonial-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.testimonial-card {
+  max-width: 300px;
+  text-align: center;
+}
+
+.testimonial-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  margin-bottom: 15px;
+}
+
+.testimonial-card p {
+  font-size: 14px;
+}
+
+.testimonial-card em {
+  display: block;
+  margin-top: 10px;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.carousel-dots {
+  margin-top: 30px;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.dot.active {
+  background: white;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #fff;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #2a67ad;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  color: #6c757d;
+  font-size: 1rem;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+.gallery-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  flex-wrap: nowrap;
+  gap: 15px;
+}
+
+.gallery-row img {
+  width: 19%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.gallery-row img:hover {
+  transform: scale(1.05);
+}
+
+.gallery-dots {
+  margin-top: 25px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 6px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #2a67ad;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.contact-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 80px 10%;
+  min-height: 100vh;
+  position: relative;
+  background: url('./infinite-loop-03\ \(1\).jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  z-index: 1;
+}
+
+.contact-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.form-container {
+  width: 55%;
+  z-index: 2;
+}
+
+.form-container h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.form-container p {
+  font-size: 16px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  background: transparent;
+  color: white;
+  border-radius: 4px;
+}
+
+form textarea {
+  height: 150px;
+  resize: none;
+}
+
+form button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+form button:hover {
+  background-color: #357ab8;
+}
+
+.info-container {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+
+.info-container p {
+  font-size: 16px;
+  margin: 15px 0;
+}
+
+.info-container i {
+  margin-right: 10px;
+}
+
+footer {
+  background-color: #111;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: white;
+}
+
+
+</style>
+  
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="hero">
+    <div class="nav">
+      <div class="logo">Infinite Loop</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#what">What We Do</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="hero-content">
+        <h1>Infinite Loop</h1>
+        <p>Bootstrap 4.0 Parallax Theme</p>
+        <p>Free HTML Template by TOOPLATE</p>
+        <div class="arrow">&#8595;</div>
+      </div>
+      
+  </header>
+  <section id="what-we-do" class="py-5 bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-primary text-left mb-3">What We Do</h2>
+        <p class="text-left mb-5">
+          This is Infinite Loop, free Bootstrap 4.0 HTML template with a parallax effect. This layout is what you can modify and use for your websites.
+          Please spread a word to your friends about our website. Thank you for supporting us. If you have any question, you can contact us or chat
+          with us on our <a href="#" class="text-primary">Tooplate Facebook page</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Feature 1 -->
+      <div class="col-md-6 mb-5">
+        <div class="d-flex">
+          <i class="fas fa-chart-bar fa-3x text-primary mr-4"></i>
+          <div>
+            <h5 class="text-primary">Market Analysis</h5>
+            <p>
+              Praesent sed pharetra lorem, blandit convallis mi. Aenean ornare elit ac metus lacinia, sed iaculis nibh semper.
+              Pellentesque est urna.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="col-md-6 mb-5">
+  <div class="d-flex">
+    <i class="fas fa-comment-alt fa-3x text-primary mr-4"></i>
+    <div>
+      <h5 class="text-primary">Fast Support</h5>
+      <p>
+        Credit goes to <a href="#" class="text-primary">Pexels</a> website for all images used in this template. 
+        Cras condimentum mi et sapien dignissim luctus.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+      <!-- Feature 3 -->
+      <div class="col-md-6 mb-5">
+        <div class="d-flex">
+          <i class="fas fa-fingerprint fa-3x text-primary mr-4"></i>
+          <div>
+            <h5 class="text-primary">Top Security</h5>
+            <p>
+              You have <strong>no</strong> authority to post this template as a ZIP file on your template collection websites.
+              You can <strong>use</strong> this template for your commercial websites.
+            </p>
+            <a href="#" class="btn btn-primary btn-sm">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+<!-- Social Work -->
+<div class="col-md-6 mb-5">
+  <div class="d-flex">
+    <i class="fas fa-users fa-3x text-primary mr-4"></i>
+    <div>
+      <h5 class="text-primary">Social Work</h5>
+      <p>
+        You can change <a href="#" class="text-primary">Font Awesome icons</a> by either <em>fas</em> or <em>far</em> 
+        in the HTML codes. For Examples: 
+        <code>&lt;i class="fas fa-users"&gt;</code>, <code>&lt;i class="far fa-chart-bar"&gt;</code>
+      </p>
+      <a href="#" class="btn btn-primary btn-sm">Details</a>
+    </div>
+  </div>
+</div>
+
+</div>
+</section>
+
+ 
+<div id="testimonials" class="testimonials-section">
+  <div class="overlay"></div>
+  <div class="content">
+    <h2>Testimonials</h2>
+    <p>Nulla dictum sem non eros euismod, eu placerat tortor lobortis. Suspendisse id velit eu libero pellentesque interdum. Etiam quis congue eros.</p>
+
+    <div class="testimonial-cards">
+      <div class="testimonial-card">
+        <img src="./testimonial-img-01.jpg" alt="Catherine Win">
+        <p>This background image includes a semi-transparent overlay layer. This section also has a parallax image effect.</p>
+        <em>Catherine Win (Designer)</em>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="./testimonial-img-02.jpg" alt="Dual Rocker">
+        <p>Testimonial section comes with carousel items. You can use Infinite Loop HTML CSS template for your websites.</p>
+        <em>Dual Rocker (CEO)</em>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="./testimonial-img-03.jpg" alt="Sandar Soft">
+        <p>Nulla finibus ligula nec tortor convallis tincidunt. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+        <em>Sandar Soft (Marketing)</em>
+      </div>
+    </div>
+
+    <div class="carousel-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</div>
+<section class="gallery-section">
+    <div class="container">
+      <h2 class="section-title">Gallery</h2>
+      <p class="section-subtitle">
+        Praesent sed pharetra lorem, blandit convallis mi. Aenean ornare elit ac metus lacinia, 
+        sed iaculis nibh semper. Pellentesque est urna, lobortis eu arcu a, aliquet tristique urna.
+      </p>
+
+      <div class="gallery-row">
+        <img src="./gallery-img-01.jpg" alt="Image 1">
+        <img src="./gallery-img-02.jpg" alt="Image 2">
+        <img src="./gallery-tn-03.jpg" alt="Image 3">
+        <img src="./gallery-img-04.jpg" alt="Image 4">
+        <img src="./gallery-img-05.jpg" alt="Image 5">
+      </div>
+
+      <div class="gallery-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </section>
+  <div id="contact" class="contact-section">
+  <div class="form-container">
+    <h2>Contact Us</h2>
+    <p>
+      Proin enim orci, tincidunt quis suscipit in, placerat nec est. Vestibulum posuere faucibus posuere.
+      Quisque aliquam velit eget leo blandit egestas. Nulla id posuere felis, quis tristique nulla.
+    </p>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <div class="info-container">
+    <p><i class="fas fa-comments"></i> Chat Online</p>
+    <p><i class="fas fa-envelope"></i> mail@company.com</p>
+    <p><i class="fas fa-map-marker-alt"></i> Our Location</p>
+    <p><i class="fas fa-phone"></i> 255-662-5566</p>
+  </div>
+</div>
+
+<footer>
+  <p>Copyright © 2020 Company Name. Designed by TOOPLATE</p>
+</footer>
+
+
+</body>
+</html>

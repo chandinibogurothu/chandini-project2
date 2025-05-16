@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+    <style>
+        .testimonials-section {
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.testimonials-section .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.testimonials-section .content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.testimonials-section h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.testimonials-section p {
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+.testimonial-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.testimonial-card {
+  max-width: 300px;
+  text-align: center;
+}
+
+.testimonial-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  margin-bottom: 15px;
+}
+
+.testimonial-card p {
+  font-size: 14px;
+}
+
+.testimonial-card em {
+  display: block;
+  margin-top: 10px;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.carousel-dots {
+  margin-top: 30px;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.dot.active {
+  background: white;
+}
+
+    </style>
+</head>
+<body>
+    <div id="testimonials" class="testimonials-section">
+  <div class="overlay"></div>
+  <div class="content">
+    <h2>Testimonials</h2>
+    <p>Nulla dictum sem non eros euismod, eu placerat tortor lobortis. Suspendisse id velit eu libero pellentesque interdum. Etiam quis congue eros.</p>
+
+    <div class="testimonial-cards">
+      <div class="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Catherine Win">
+        <p>This background image includes a semi-transparent overlay layer. This section also has a parallax image effect.</p>
+        <em>Catherine Win (Designer)</em>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Dual Rocker">
+        <p>Testimonial section comes with carousel items. You can use Infinite Loop HTML CSS template for your websites.</p>
+        <em>Dual Rocker (CEO)</em>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="https://randomuser.me/api/portraits/women/46.jpg" alt="Sandar Soft">
+        <p>Nulla finibus ligula nec tortor convallis tincidunt. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+        <em>Sandar Soft (Marketing)</em>
+      </div>
+    </div>
+
+    <div class="carousel-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+

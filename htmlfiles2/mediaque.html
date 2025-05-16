@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    ul{
+        display: flex;
+        justify-content: space-evenly;
+        background-color: grey;
+        color: bisque;
+        list-style: none;
+    }
+    @media(min-width:349)and (max-width:450){
+        ul{
+            background-color: black;
+            color: darkred;
+        }
+
+    }
+    @media(min-width:767px){
+        ul{
+            background-color: aqua;
+            color: brown;
+        }
+    }
+    @media(max-width:768px){
+        ul{
+           flex-direction: column;
+        }
+    }
+    @media(min-width:1024px) and (max-width:1279px){
+        body{
+            margin:0;
+            background-color: darkgray;
+            height: 100hv;
+        }
+        ul{
+            display: grid;
+            grid-template-columns:repeat(5,1fr) ;
+            grid-template-rows: repeat(3,1fr);
+        }
+
+    }
+    /*@media(max-width:1279px){
+        body{
+            margin:0, 
+        }
+        ul{
+            display: grid;
+            grid-template-columns:repeat(5,1fr) ;
+            grid-template-rows: repeat(3,1fr);
+        }
+
+    }*/
+
+</style>
+<body>
+    <ul>
+        <li>item1</li>
+        <li>itam2</li>
+        <li>item3</li>
+        <li>itam4</li>
+        <li>item5</li>
+        <li>itam6</li>
+        <li>item7</li>
+        <li>itam8</li>
+        <li>item9</li>
+        <li>itam10</li>
+    </ul>
+    
+</body>
+</html>

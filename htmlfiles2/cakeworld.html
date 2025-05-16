@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cake Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Hover dropdown */
+    .dropdown:hover .dropdown-menu {
+      display: block;
+      margin-top: 0; /* remove delay */
+    }
+    /* Centering the search bar */
+    .navbar-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+    .navbar-search {
+      max-width: 400px;
+      width: 100%;
+    }
+    .card {
+  display: flex;
+  transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(0.95); /* Zoom out effect */
+    }
+
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Overlay */
+    #entryPopup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    #entryPopupContent {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    #entryPopupContent button {
+      padding: 12px 30px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #mainPage {
+      display: none;
+    }
+  </style>
+  
+</head>
+<body>
+  <div id="entryPopup">
+    <div id="entryPopupContent">
+      <h2>Click "View" to enter the website</h2>
+      <button onclick="enterWebsite()">View</button>
+    </div>
+  </div>
+  
+
+
+<!-- Navbar -->
+<div id="mainPage">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="https://img.icons8.com/color/48/000000/birthday-cake.png" alt="Cake Logo" width="30" height="30" class="d-inline-block align-text-top">
+      Cake Delight
+    </a>
+
+    <!-- Center Search Form -->
+    <div class="navbar-center">
+      <form class="d-flex navbar-search">
+        <input class="form-control me-2" type="search" placeholder="Search cakes..." aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+
+        <!-- Home Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Home
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+            <li><a class="dropdown-item" href="#">Login/Register</a></li>
+            <li><a class="dropdown-item" href="#">My Account</a></li>
+          </ul>
+        </li>
+
+        <!-- Menu Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Menu
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+            <li><a class="dropdown-item" href="#">Cakes</a></li>
+            <li><a class="dropdown-item" href="#">Chocolates</a></li>
+            <li><a class="dropdown-item" href="#">Flowers</a></li>
+          </ul>
+        </li>
+
+        <!-- Cart Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Cart
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+            <li><a class="dropdown-item" href="#">Add Something</a></li>
+            <li><a class="dropdown-item" href="#">Favourites</a></li>
+          </ul>
+        </li>
+
+        <!-- Contact Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contact
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+            <li><a class="dropdown-item" href="#">6300077479</a></li>
+            <li><a class="dropdown-item" href="#">chandu@gmail.com</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  
+
+    <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
+      <ul class="navbar-nav">
+
+        <!-- Birthday dropdown-->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Birthday
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+            <li><a class="dropdown-item" href="#">Gifts</a></li>
+            <li><a class="dropdown-item" href="#">Foodies</a></li>
+            <li><a class="dropdown-item" href="#">Jewellary</a></li>
+            <li><a class="dropdown-item" href="#">Premium Gifts</a></li>
+            <li><a class="dropdown-item" href="#">Teddy Bears</a></li>
+            <li><a class="dropdown-item" href="#">New Arrivals</a></li>
+          </ul>
+        </li>
+
+        <!-- Annviversary-->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Annviversary
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+            <li><a class="dropdown-item" href="#">Photo Frames</a></li>
+            <li><a class="dropdown-item" href="#">Decorations</a></li>
+            <li><a class="dropdown-item" href="#">Home Decor</a></li>
+            <li><a class="dropdown-item" href="#">Hampers</a></li>
+          </ul>
+        </li>
+
+        <!-- Cakes -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Cakes
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+            <li><a class="dropdown-item" href="#">Butterscotch Cakes</a></li>
+            <li><a class="dropdown-item" href="#">Black Forest Cakes</a></li>
+            <li><a class="dropdown-item" href="#">Red Velvet Cakes</a></li>
+            <li><a class="dropdown-item" href="#">Truffel Cakes</a></li>
+            <li><a class="dropdown-item" href="#">Choclate Cakes</a></li>
+            <li><a class="dropdown-item" href="#">Vanilla Cakes</a></li>
+            <li><a class="dropdown-item" href="#">Egg Less Cakes</a></li>
+          </ul>
+        </li>
+
+        
+        <!-- Flowers-->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Flowers
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+            <li><a class="dropdown-item" href="#">Flowers</a></li>
+            <li><a class="dropdown-item" href="#">Flower Bouquets</a></li>
+            <li><a class="dropdown-item" href="#">Arrangements</a></li>
+            <li><a class="dropdown-item" href="#">Daisy</a></li>
+            <li><a class="dropdown-item" href="#">Carnation</a></li>
+            <li><a class="dropdown-item" href="#">Gerbera Daisy</a></li>
+            <li><a class="dropdown-item" href="#">Marigold</a></li>
+          </ul>
+        </li>
+        <!-- Chocolates-->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Chocolates
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+            <li><a class="dropdown-item" href="#">Ferrore Rocher</a></li>
+            <li><a class="dropdown-item" href="#">Cadbury</a></li>
+            <li><a class="dropdown-item" href="#">Artisanal Chocolates</a></li>
+            <li><a class="dropdown-item" href="#">Smoor Chocolates</a></li>
+            <li><a class="dropdown-item" href="#">Gournmet Chocolates</a></li>
+            <li><a class="dropdown-item" href="#">Organic Chocolates</a></li>
+            <li><a class="dropdown-item" href="#">White Chocolates</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Combos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+            <li><a class="dropdown-item" href="#">Flowers & Chocolates</a></li>
+            <li><a class="dropdown-item" href="#">Flower & Cakes</a></li>
+            <li><a class="dropdown-item" href="#">Flowers & Plants</a></li>
+            <li><a class="dropdown-item" href="#">Flowers & Gifts</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    
+  </div>
+</nav>
+<!--carousel-->
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://www.fnp.com/assets/images/custom/new-home-2025/hero-banners/Bkirthday_Desk_copy_25.jpg" class="d-block carousel-image" alt="First Slide">
+    </div>
+    <div class="carousel-item">
+      <img src="https://www.fnp.com/assets/images/custom/new-home-2025/hero-banners/FlowersBanner_Desk-23-04.jpg" class="d-block carousel-image" alt="Second Slide">
+    </div>
+    <div class="carousel-item">
+      <img src="https://www.fnp.com/assets/images/custom/new-home-2025/hero-banners/Mothers_Day_banner_Desk_copy_25.jpg" class="d-block carousel-image" alt="Third Slide">
+    </div>
+    <div class="carousel-item">
+      <img src="https://www.fnp.com/assets/images/custom/new-home-2025/hero-banners/Luxe_Desk_copy_25.jpg" class="d-block carousel-image" alt="Fourth Slide">
+    </div>
+  </div>
+  
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <!--<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>-->
+</div>
+
+<style>
+  .carousel-image {
+    width: 100vw;    /* Full screen width */
+    height: 70vh;    /* 50% of screen height */
+    object-fit: cover; /* Maintain image proportion without stretching */
+  }
+</style>
+
+  
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+
+<div class="d-flex flex-wrap gap-2 justify-content-center p-3">
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="./cake2.webp" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Pretty in Pink Candy Cake</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      A vibrant three-tiered pink candy cake, perfect for sweet celebrations with a playful and elegant touch. 🎂💖
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+
+    <!--<a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+</div>
+</div>
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="./cake10.webp" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Black Forest Gateau</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      A rich chocolate sponge cake layered with whipped cream, cherries, and topped with glossy chocolate ganache. 🍫🍒
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+    <!--<a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20241007112046/fruit-overload-cake-half-kg_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Fruit Overload Cake</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      Fruit Overload Cake is a delightful treat loaded with fresh, juicy fruits for a burst of natural flavor in every bite.
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+   <!-- <a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20240909174531/classic-black-forest-cake-half-kg_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Cherry Chocolate Cake</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+     Cherry Chocolate Cake is a rich and moist chocolate cake layered with whipped cream and sweet cherries.
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+   <!-- <a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20221205201829/red-velvet-fresh-cream-cake-half-kg_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Southern Red Velvet </h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+    Red velvet cake is a soft, moist, and mildly chocolatey cake with a rich red color, typically typically topped with cream cheese frosting. 🍰❤️
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+   <!-- <a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20221130174920/heavenly-vanilla-cream-cake-half-kg_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Heavenly Vanilla Cream Cake</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      A light and fluffy vanilla cake topped with rich, creamy frosting — perfect for every celebration! 🎂💫
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+    <!--<a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20240203105329/hearts-desire-roses_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Heart's Desire LED Rose Bouquet</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      The Heart's Desire LED Rose Bouquet is a beautiful arrangement of glowing roses that symbolize everlasting love.
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+   <!--<a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20250415165406/hues-of-love-rose-bouquet_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Hues of Love Rose Bouquet</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      "The Hues of Love Rose Bouquet is a vibrant collection of roses, celebrating love with every color.
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+   <!--<a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20250415165345/mixed-brilliance-gerbera-blossoms_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Brilliance Gerbera Flower Bouquet</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      The Brilliance Gerbera Flower Bouquet bursts with bright, cheerful blooms that light up any occasion
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+    <!--<a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20250415165403/happy-times-carnations-bouquet_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Radiant Gerbera Mix</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      The Radiant Gerbera Mix is a lively bouquet bursting with colorful gerberas to brighten any moment.
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+    <!--<a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20250411173610/personalised-lamp-n-blushing-lilies-arrangement_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Personalised Lamp & Blushing Lilies</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      The Personalised Lamp & Blushing Lilies create a perfect blend of soft light and floral elegance for heartfelt gifting.
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+    <!--<a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20250411173620/fragrance-of-moms-love-rose-arrangement_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Fragrance of Mom's Love Roses</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      The Fragrance of Mom's Love Roses captures the warmth and affection of a mother's love in every bloom.
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+    <!--<a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20240503174040/sprinkle-of-premium-chocolates_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Sprinkle Of Chocolates</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      A delightful touch of sweetness, where every sprinkle brings a moment of joy.
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+    <!--<a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com/images/pr/l/v20250313104434/chocolaty-orchid-affair_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Chocolaty Orchid Affair</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      A rich blend of chocolate and elegance, blooming with irresistible charm.
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+    <!--<a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20190503123830/love-ferrero-chocolates_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Love Ferrero Chocolates</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      A taste of pure love wrapped in golden delight.
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+    <!--<a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20240613102813/10-cadbury-dairy-milk-bouquet_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Cadbury Dairy Milk Bouquet</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      A taste of pure love wrapped in golden delight.
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+   <!-- <a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20230918223958/special-love-ferrero-rocher-box_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Special Love Ferrero Rocher Box</h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      A golden box of love, filled with sweet moments and Ferrero magic.
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+    <!--<a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+<div class="card" style="width: 10rem; height: 20rem; overflow: hidden;">
+  <img src="https://www.fnp.com//images/pr/l/v20210123022608/valentine-chocolatey-love_1.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="overflow: hidden; padding: 0.5rem;">
+    <h5 class="card-title" style="font-size: 1rem;">Beautiful Chocolatey Love </h5>
+    <p class="card-text" style="
+      font-size: 0.75rem;
+      height: 4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    ">
+      A sweet symphony of chocolates crafted with love and beauty.
+    </p>
+    <a href="./just.html" class="btn btn-primary btn-sm">Order Now</a>
+    <!--<a href="#" class="btn btn-primary btn-sm">Order Now</a>-->
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+  function enterWebsite() {
+    document.getElementById("entryPopup").style.display = "none";
+    document.getElementById("mainPage").style.display = "block";
+  }
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
